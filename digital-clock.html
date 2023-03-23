@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+           background-image: linear-gradient(to right , rgb(48, 203, 254) , green);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            font-size: 10vw;
+            border: 1px solid white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.779);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span id="hours">00</span>
+        <span>:</span>
+        <span id="minutes">00</span>
+        <span>:</span>
+        <span id="seconds">00</span>
+        <span>:</span>
+        <span id="session">am</span>
+
+    </div>
+    <script>
+         class DisplayTime{
+            constructor(){
+            this.dateTime = new Date();
+            this.hrs = this.dateTime.getHours();
+            this.min = this.dateTime.getMinutes();
+            this.sec = this.dateTime.getSeconds();
+            this.session = document.querySelector('#session');
+
+        if(this.hrs >= 12){
+            this.session.innerHTML = "PM"
+        }
+        else{
+            this.session.innerHTML = "AM"
+        }
+      
+        if( this.hrs > 12){
+            this.hrs =  this.hrs - 12 ;
+        }
+        document.querySelector('#hours').innerHTML =  this.hrs;
+        document.querySelector('#minutes').innerHTML =  this.min;
+        document.querySelector('#seconds').innerHTML =  this.sec;
+    }
+}
+     let displayTime = new DisplayTime();
+        setInterval(() => {
+            displayTime = new DisplayTime(); 
+        },1000)   
+        
+    </script>
+</body>
+
+</html>
